@@ -23,7 +23,7 @@ module.exports = {
   beforeCreate : function(values,cb){
   	//we are using BCrypt here to handle password hashing
   	BCrypt.genSalt(10,function(err,salt){
-  		bcrypt.hash(values.password,salt,function(err,hash){
+  		BCrypt.hash(values.password,salt,function(err,hash){
   			values.password = hash;
   			cb();
   		});
