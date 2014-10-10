@@ -13,10 +13,8 @@ module.exports = {
 	*
 	*/
 	handleLogin:function(req,res) {
-		if(!req.session.user){
-			return res.json({
-				auth : false
-			});
+		if(req.session.user){
+			return res.json(req.session.user);
 		}
 		else{
 			/**
@@ -33,27 +31,35 @@ module.exports = {
 					{ email : login }
 				]
 			}).exec(function(err,user){
-				//Now perform a BCrypt compare
-				BCrypt.compare(password,user.password,function(err,res){
-					if(res){
-						//now add it to session
-						req.session.user = {
-							username : user.username,
-							email : user.email
+				if(user){
+					//Now perform a BCrypt compare
+					BCrypt.compare(password,user.password,function(err,response){
+						if(response){
+							//now add it to session
+							req.session.user = {
+								username : user.username,
+								email : user.email,
+								auth : true
+							};
+							return res.json({
+								auth : true,
+								username : user.username,
+								email : user.email
+							});
 						}
-						return res.json({
-							auth : true,
-							username : user.username,
-							email : user.email
-						});
-					}
-					else{
-						//
-						return res.json({
-							auth : false
-						});
-					}
-				});
+						else{
+							//
+							return res.json({
+								auth : false
+							});
+						}
+					});					
+				}
+				else{
+					return res.json({
+						auth : false
+					});
+				}
 			});
 		}
 	},
@@ -63,7 +69,7 @@ module.exports = {
 	*/
 	handleLogout:function(req,res){
 		if(req.session.user){
-			req.session.user = {};
+			delete req.session.user;
 		}
 
 		return res.json({
