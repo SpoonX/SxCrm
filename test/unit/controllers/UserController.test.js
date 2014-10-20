@@ -6,8 +6,8 @@ describe('UserController',function(){
   * Auth with bad email and bad password
   *
   */
-  describe('.auth(false): POST /user/authenticate',function(){
-    it('Should return auth:false status when using bad email and password',function(done){
+  describe('.auth(false): POST /user/authenticate', function() {
+    it('Should return auth:false status when using bad email and password', function(done) {
 
       var email = "qwerty@dayrep.com"; //test bad email case
       var password = "qwerty"; //test bad password case
@@ -30,8 +30,8 @@ describe('UserController',function(){
   * Auth with good email and bad password
   *
   */
-  describe('.auth(false): POST /user/authenticate',function(){
-    it('Should return auth:false status when the email is good and password bad',function(done){
+  describe('.auth(false): POST /user/authenticate', function() {
+    it('Should return auth:false status when the email is good and password bad', function(done) {
 
       var email = "whang@dayrep.com"; //test bad email case
       var password = "qwerty"; //test bad password case
@@ -55,8 +55,8 @@ describe('UserController',function(){
   * Auth with good match
   *
   */
-  describe('.auth(true): POST /user/authenticate',function(){
-    it('Should return the email, email and auth:true status when the match is good',function(done){
+  describe('.auth(true): POST /user/authenticate', function() {
+    it('Should return the email, email and auth:true status when the match is good', function(done) {
 
       var email = "whang@dayrep.com"; //test good email case
       var password = "whang"; //good password case
@@ -75,47 +75,6 @@ describe('UserController',function(){
           assert.strictEqual(res.body.email, email, 'Email equals : ' + email);
         })
         .expect(200, done);
-    })
-  });
-  /**
-  * Auth when user already logged in
-  *
-  */
-
-  describe('.auth(true): POST /user/authenticate',function(){
-
-    it('Should return the email, and auth:true status when the user is already logged in',function(done){
-
-      var agent = request.agent(sails.hooks.http.app);//use agent because it's sweet
-    
-      var email = "whang@dayrep.com"; //test good email case
-      var password = "whang"; //good password case
-
-      agent
-        .post('/user/authenticate')
-        .send({email:email,password:password})
-        .set('Content-Type', 'application/json')
-        .expect('Content-Type', /json/)
-        .expect(200)
-        .end(function(err,res){
-          if(err){
-            throw err;
-          }
-          agent
-            .post('/user/authenticate')
-            .send({email:email,password:password})
-            .set('Content-Type', 'application/json')
-            .expect('Content-Type', /json/)
-            .expect(function (res) {
-              //auth status
-              assert.property(res.body,'auth', 'Auth status returned');
-              assert.strictEqual(res.body.auth, true, 'Auth statue equals true');
-              //email
-              assert.property(res.body,'email', 'Email returned');
-              assert.strictEqual(res.body.email, email, 'Email equals : ' + email);
-            })
-            .expect(200,done)
-        })
     })
   });
 });
