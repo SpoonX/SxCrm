@@ -5,29 +5,25 @@
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
 
-var BCrypt = require("bcrypt");
+var bcrypt = require("bcrypt");
 
 module.exports = {
 
   attributes: {
-  	username : {
-  		type : "string"
-  	},
-  	password : {
-  		type : "string"
-  	},
-  	email : {
-  		type : "email"
-  	}
+    email : {
+      type : "email"
+    },
+    password : {
+      type : "string"
+    }
   },
   beforeCreate : function(values,cb){
-  	//we are using BCrypt here to handle password hashing
-  	BCrypt.genSalt(10,function(err,salt){
-  		BCrypt.hash(values.password,salt,function(err,hash){
-  			values.password = hash;
-  			cb();
-  		});
-  	});
+    //we are using BCrypt here to handle password hashing
+    bcrypt.genSalt(10,function(err,salt){
+      bcrypt.hash(values.password,salt,function(err,hash){
+        values.password = hash;
+        cb();
+      });
+    });
   }
 };
-

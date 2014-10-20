@@ -1,8 +1,8 @@
 {
   "name": "SxCrm",
   "private": true,
-  "version": "0.0.0",
-  "description": "a Sails application",
+  "version": "0.0.1",
+  "description": "An awesome SpoonX app",
   "keywords": [],
   "dependencies": {
     "bcrypt": "^0.8.0",
@@ -22,18 +22,26 @@
     "include-all": "~0.1.3",
     "rc": "~0.5.0",
     "sails": "~0.10.5",
-    "sails-disk": "~0.10.0",
     "sails-mysql": "^0.10.6"
+  },
+  "devDependencies": {
+    "barrels": "^1.1.1",
+    "chai": "^1.9.1",
+    "mocha": "^1.21.4",
+    "sails-disk": "^0.10.4",
+    "should": "^4.0.4",
+    "supertest": "^0.13.0"
   },
   "scripts": {
     "start": "node app.js",
-    "debug": "node debug app.js"
+    "debug": "node debug app.js",
+    "test": "node_modules/mocha/bin/mocha -b"
   },
   "main": "app.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/vagrant/SxCrm/.git"
   },
-  "author": "vagrant",
+  "author": "scrunshes",
   "license": ""
 }

@@ -5,76 +5,69 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
-var BCrypt = require('bcrypt');
+var bcrypt = require('bcrypt');
 
 module.exports = {
-	/**
-	* HandleLogin
-	*
-	*/
-	handleLogin:function(req,res) {
-		if(req.session.user){
-			return res.json(req.session.user);
-		}
-		else{
-			/**
-			*	Input :
-			*	@login
-			*	@password
-			*/
-			var login = req.param('login');
-			var password = req.param('password');
+  /**
+  * HandleLogin
+  *
+  */
+  handleLogin:function(req,res) {
+    if(req.session.user){
+      return res.json(req.session.user);
+    }
+    else{
+      /**
+      * Input :
+      * @email
+      * @password
+      */
+      var email = req.param('email');
+      var password = req.param('password');
 
-			User.findOne({
-				or : [
-					{ username : login },
-					{ email : login }
-				]
-			}).exec(function(err,user){
-				if(user){
-					//Now perform a BCrypt compare
-					BCrypt.compare(password,user.password,function(err,response){
-						if(response){
-							//now add it to session
-							req.session.user = {
-								username : user.username,
-								email : user.email,
-								auth : true
-							};
-							return res.json({
-								auth : true,
-								username : user.username,
-								email : user.email
-							});
-						}
-						else{
-							//
-							return res.json({
-								auth : false
-							});
-						}
-					});					
-				}
-				else{
-					return res.json({
-						auth : false
-					});
-				}
-			});
-		}
-	},
-	/**
-	* HandleLogout
-	*
-	*/
-	handleLogout:function(req,res){
-		if(req.session.user){
-			delete req.session.user;
-		}
+      User.findOne({
+        email : email
+      }).exec(function(err,user){
+        if(user){
+          //Now perform a BCrypt compare
+          bcrypt.compare(password,user.password,function(err,response){
+            if(response){
+              //now add it to session
+              req.session.user = {
+                auth : true,
+                email : user.email
+              };
+              return res.json({
+                auth : true,
+                email : user.email
+              });
+            }
+            else{
+              return res.json({
+                auth : false
+              });
+            }
+          });         
+        }
+        else{
+          return res.json({
+            auth : false
+          });
+        }
+      });
+    }
+  },
+  /**
+  * HandleLogout
+  *
+  */
+  handleLogout:function(req,res){
+    if(req.session.user){
+      delete req.session.user;
+    }
 
-		return res.json({
-			auth : false
-		});
-	}
+    return res.json({
+      auth : false
+    });
+  }
 };
-
