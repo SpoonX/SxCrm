@@ -22,6 +22,9 @@ module.exports = {
     var password = req.param('password');
 
     User.findOne({email : email}, function(err, user) {
+      if (err) {
+        return res.negotiate(err);
+      }
       if (!user) {
         return res.json({
           auth : false
