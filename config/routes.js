@@ -25,10 +25,7 @@ module.exports.routes = {
   '/' : {
     view : 'homepage'
   },
-  /**
-  * User
-  *
-  **/
+  //User
   'POST /user/authenticate' : "User.handleLogin",
   'GET /user/logout' : "User.handleLogout"
 
