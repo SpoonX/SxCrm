@@ -9,7 +9,6 @@
  */
 
 var SailsApp = require('sails').Sails,
-    fs       = require('fs'),
     config   = require('./config.js'),
     Barrels  = require('barrels'),
     sails;
