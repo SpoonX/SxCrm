@@ -13,41 +13,34 @@ module.exports = {
   *
   */
   handleLogin:function(req,res) {
-    if(req.session.user){
-      return res.json(req.session.user);
-    }
-    else{
-      /**
-      * Input :
-      * @email
-      * @password
-      */
-      var email = req.param('email');
-      var password = req.param('password');
+    /**
+    * Input :
+    * @email
+    * @password
+    */
+    var email = req.param('email');
+    var password = req.param('password');
 
-      User.findOne({
-        email : email
-      }).exec(function(err,user){
-        if(user){
-          //Now perform a BCrypt compare
-          bcrypt.compare(password,user.password,function(err,response){
-            if(response){
-              //now add it to session
-              req.session.user = {
-                auth : true,
-                email : user.email
-              };
-              return res.json({
-                auth : true,
-                email : user.email
-              });
-            }
-            else{
-              return res.json({
-                auth : false
-              });
-            }
-          });         
+    User.findOne({
+      email : email
+    }).exec(function(err,user){
+      if(!user){
+        return res.json({
+          auth : false
+        });
+      }
+      //Now perform a BCrypt compare
+      bcrypt.compare(password,user.password,function(err,response){
+        if(response){
+          //now add it to session
+          req.session.user = {
+            auth : true,
+            email : user.email
+          };
+          return res.json({
+            auth : true,
+            email : user.email
+          });
         }
         else{
           return res.json({
@@ -55,7 +48,7 @@ module.exports = {
           });
         }
       });
-    }
+    });
   },
   /**
   * HandleLogout
