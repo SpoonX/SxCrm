@@ -1,7 +1,7 @@
 var request = require('supertest'),
     assert  = require('chai').assert;
 
-describe('UserController',function(){
+describe('UserController', function() {
   /**
   * Auth with bad email and bad password
   *
