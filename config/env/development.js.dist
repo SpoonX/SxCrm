@@ -24,9 +24,9 @@ module.exports = {
 		MySqlServ : {
 			adapter : "sails-mysql",
 			host: 'localhost',
-		    user: 'root',
-		    password: '',
-		    database: 'SxCrm'
+	    user: 'root',
+	    password: '',
+	    database: 'SxCrm'
 		}
 	}
 
