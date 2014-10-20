@@ -16,29 +16,18 @@
  * http://sailsjs.org/#/documentation/reference/sails.config/sails.config.policies.html
  */
 
-
 module.exports.policies = {
-
   '*': false, //by default accept no request
-  /**
-  * User
-  *
-  *
-  */
+  //User
   UserController : {
     'handleLogin'   :   true,
     'handleLogout'  :   ['userAuth']
   },
-  /**
-  * Contact CRUD
-  *
-  *
-  */
+  //Contact
   ContactController : {
     'find'    : ['userAuth'], 
     'create'  : ['userAuth'],
     'update'  : ['userAuth'],
     'destroy' : ['userAuth']
   }
-
 };

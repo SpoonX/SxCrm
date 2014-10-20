@@ -12,7 +12,7 @@ module.exports = {
   * HandleLogin
   *
   */
-  handleLogin:function(req,res) {
+  handleLogin : function(req, res) {
     /**
     * Input :
     * @email
@@ -21,17 +21,15 @@ module.exports = {
     var email = req.param('email');
     var password = req.param('password');
 
-    User.findOne({
-      email : email
-    }).exec(function(err,user){
-      if(!user){
+    User.findOne({email : email}, function(err, user) {
+      if (!user) {
         return res.json({
           auth : false
         });
       }
       //Now perform a BCrypt compare
-      bcrypt.compare(password,user.password,function(err,response){
-        if(response){
+      bcrypt.compare(password, user.password, function(err, response) {
+        if (response) {
           //now add it to session
           req.session.user = {
             auth : true,
@@ -42,7 +40,7 @@ module.exports = {
             email : user.email
           });
         }
-        else{
+        else {
           return res.json({
             auth : false
           });
@@ -54,8 +52,8 @@ module.exports = {
   * HandleLogout
   *
   */
-  handleLogout:function(req,res){
-    if(req.session.user){
+  handleLogout : function(req, res) {
+    if (req.session.user) {
       delete req.session.user;
     }
 

@@ -17,10 +17,10 @@ module.exports = {
       type : "string"
     }
   },
-  beforeCreate : function(values,cb){
+  beforeCreate : function(values, cb) {
     //we are using BCrypt here to handle password hashing
-    bcrypt.genSalt(10,function(error,salt){
-      bcrypt.hash(values.password,salt,function(error,hash){
+    bcrypt.genSalt(10, function(error, salt) {
+      bcrypt.hash(values.password, salt, function(error, hash) {
         values.password = hash;
         cb();
       });
