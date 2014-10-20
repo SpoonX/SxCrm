@@ -32,22 +32,23 @@ module.exports = {
       }
       //Now perform a BCrypt compare
       bcrypt.compare(password, user.password, function(err, response) {
-        if (response) {
-          //now add it to session
-          req.session.user = {
-            auth : true,
-            email : user.email
-          };
-          return res.json({
-            auth : true,
-            email : user.email
-          });
+        if (err) {
+          return res.negotiate(err);
         }
-        else {
+        if(!response){
           return res.json({
             auth : false
           });
         }
+        //now add it to session
+        req.session.user = {
+          auth : true,
+          email : user.email
+        };
+        return res.json({
+          auth : true,
+          email : user.email
+        });
       });
     });
   },
