@@ -1,0 +1,20 @@
+[
+  {
+    "id"          : 1,
+    "createdAt"   : "2014-10-18T08:35:45.265Z",
+    "updatedAt"   : "2014-10-18T08:35:45.265Z",
+    "name"        : "Walter",
+    "lastName"    : "White",
+    "phoneNumber" : "0478569802",
+    "emailAddress": "walter.white@dayrep.com"
+  },
+  {
+    "id"          : 2,
+    "createdAt"   : "2014-10-18T08:35:45.265Z",
+    "updatedAt"   : "2014-10-18T08:35:45.265Z",
+    "name"        : "Guss",
+    "lastName"    : "Fring",
+    "phoneNumber" : "0458789632",
+    "emailAddress": "gus.fring@dayrep.com"
+  }
+]
