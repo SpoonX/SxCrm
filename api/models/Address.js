@@ -17,6 +17,9 @@ module.exports = {
     city : {
       type : "string"
     },
+    postCode : {
+      type : "number"
+    },
     street : {
       type : "string"
     },
