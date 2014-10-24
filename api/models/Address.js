@@ -9,22 +9,22 @@ module.exports = {
 
   attributes: {
     country : {
-      type : "string"
+      type : 'string'
     },
     state : {
-      type : "string"
+      type : 'string'
     },
     city : {
-      type : "string"
+      type : 'string'
     },
-    postCode : {
-      type : "number"
+    postcode : {
+      type : 'number'
     },
     street : {
-      type : "string"
+      type : 'string'
     },
     streetNumber : {
-      type : "number"
+      type : 'number'
     }
   }
 };
