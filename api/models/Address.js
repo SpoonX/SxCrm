@@ -24,7 +24,7 @@ module.exports = {
       type : 'string'
     },
     streetNumber : {
-      type : 'number'
+      type : 'string'
     }
   }
 };
