@@ -8,6 +8,10 @@
 module.exports = {
 
   attributes: {
+    type : {
+      type : 'string',
+      enum : ['home', 'work', 'warehouse', 'headquarter', 'delivery'] //can be completed !
+    },
     country : {
       type : 'string'
     },
