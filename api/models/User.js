@@ -5,16 +5,16 @@
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
 
-var bcrypt = require("bcrypt");
+var bcrypt = require('bcrypt');
 
 module.exports = {
 
   attributes: {
     email : {
-      type : "email"
+      type : 'email'
     },
     password : {
-      type : "string"
+      type : 'string'
     }
   },
   beforeCreate : function(values, cb) {
