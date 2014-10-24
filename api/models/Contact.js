@@ -14,8 +14,8 @@ module.exports = {
     lastName : {
       type : 'string'
     },
-    phoneNumber : {
-      type : 'string'
+    phones : {
+      model : 'phone'
     },
     emailAddress : {
       type : 'email'
