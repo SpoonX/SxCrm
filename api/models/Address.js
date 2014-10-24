@@ -25,6 +25,18 @@ module.exports = {
     },
     streetNumber : {
       type : 'string'
+    },
+    company : {
+      collection : 'company',
+      via : 'addresses'
+    },
+    branch : {
+      collection : 'branch',
+      via : 'addresses',
+    },
+    contact : {
+      collection : 'contact',
+      via : 'addresses'
     }
   }
 };

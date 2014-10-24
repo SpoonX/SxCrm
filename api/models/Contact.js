@@ -9,16 +9,29 @@ module.exports = {
 
   attributes: {
     name : {
-      type : "string"
+      type : 'string'
     },
     lastName : {
-      type : "string"
+      type : 'string'
     },
     phoneNumber : {
-      type : "string"
+      type : 'string'
     },
     emailAddress : {
-      type : "email"
+      type : 'email'
+    },
+    branches : {
+      collection : 'branch',
+      via : 'contacts',
+      dominant : true // no matter...but needed
+    },
+    companies : {
+      collection : 'company',
+      via : 'contacts',
+      dominant : true
+    },
+    addresses : {
+      model : 'address'
     }
   }
 };
