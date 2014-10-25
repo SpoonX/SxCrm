@@ -19,15 +19,43 @@
 module.exports.policies = {
   '*': false, //by default accept no request
   //User
-  UserController : {
-    'handleLogin'   :   true,
-    'handleLogout'  :   ['userAuth']
+  UserController    : {
+    'handleLogin' :   true,
+    'handleLogout':   ['userAuth']
   },
   //Contact
   ContactController : {
-    'find'    : ['userAuth'], 
-    'create'  : ['userAuth'],
-    'update'  : ['userAuth'],
-    'destroy' : ['userAuth']
+    'find'   : ['userAuth'], 
+    'create' : ['userAuth'],
+    'update' : ['userAuth'],
+    'destroy': ['userAuth']
+  },
+  //Address
+  AddressController : {
+    'find'   : ['userAuth'], 
+    'create' : ['userAuth'],
+    'update' : ['userAuth'],
+    'destroy': ['userAuth']
+  },
+  //Phone
+  PhoneController   : {
+    'find'   : ['userAuth'], 
+    'create' : ['userAuth'],
+    'update' : ['userAuth'],
+    'destroy': ['userAuth']
+  },
+  //Branch
+  BranchController  : {
+    'find'   : ['userAuth'], 
+    'create' : ['userAuth'],
+    'update' : ['userAuth'],
+    'destroy': ['userAuth']
+  },
+  //Company
+  CompanyController : {
+    'find'   : ['userAuth'], 
+    'create' : ['userAuth'],
+    'update' : ['userAuth'],
+    'destroy': ['userAuth']
   }
 };
