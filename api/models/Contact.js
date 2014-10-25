@@ -8,30 +8,34 @@
 module.exports = {
 
   attributes: {
-    name : {
-      type : 'string'
+    name          : {
+      type: 'string'
     },
-    lastName : {
-      type : 'string'
+    lastName      : {
+      type: 'string'
     },
-    phones : {
-      model : 'phone'
+    phoneNumbers  : {
+      collection  : 'phone',
+      via         : 'contacts',
+      dominant    : true
     },
-    emailAddress : {
-      type : 'email'
+    emailAddress  : {
+      type: 'email'
     },
-    branches : {
-      collection : 'branch',
-      via : 'contacts',
-      dominant : true // no matter...but needed
+    branches      : {
+      collection  : 'branch',
+      via         : 'contacts',
+      dominant    : true // no matter...but needed
     },
-    companies : {
-      collection : 'company',
-      via : 'contacts',
-      dominant : true
+    companies     : {
+      collection  : 'company',
+      via         : 'contacts',
+      dominant    : true
     },
-    addresses : {
-      model : 'address'
+    addresses     : {
+      collection  : 'address',
+      via         : 'contacts',
+      dominant    : true
     }
   }
 };

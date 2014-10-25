@@ -8,39 +8,40 @@
 module.exports = {
 
   attributes: {
-    type : {
-      type : 'string',
-      enum : ['home', 'work', 'warehouse', 'headquarter', 'delivery'] //can be completed !
+    type        : {
+      type    : 'string',
+      in      : ['home', 'work', 'warehouse', 'headquarter', 'delivery'], //can be completed !
+      required: false
     },
-    country : {
-      type : 'string'
+    country     : {
+      type: 'string'
     },
-    state : {
-      type : 'string'
+    state       : {
+      type: 'string'
     },
-    city : {
-      type : 'string'
+    city        : {
+      type: 'string'
     },
-    postcode : {
-      type : 'string'
+    postcode    : {
+      type: 'string'
     },
-    street : {
-      type : 'string'
+    street      : {
+      type: 'string'
     },
-    streetNumber : {
-      type : 'string'
+    streetNumber: {
+      type: 'string'
     },
-    company : {
-      collection : 'company',
-      via : 'addresses'
+    company     : {
+      collection: 'company',
+      via       : 'address'
     },
-    branch : {
-      collection : 'branch',
-      via : 'addresses',
+    branches    : {
+      collection: 'branch',
+      via       : 'address',
     },
-    contact : {
-      collection : 'contact',
-      via : 'addresses'
+    contacts    : {
+      collection: 'contact',
+      via       : 'addresses'
     }
   }
 };

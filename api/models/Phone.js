@@ -8,16 +8,17 @@
 module.exports = {
 
   attributes: {
-    type : {
-      type : 'string',
-      enum : ['home', 'work', 'mobile', 'proMobile']
+    type    : {
+      type    : 'string',
+      in: ['home', 'work', 'mobile', 'proMobile'],
+      required: false
     },
-    number : {
-      type : 'string'
+    number  : {
+      type: 'string'
     },
-    contact : {
-      collection : 'contact',
-      via : 'phones'
+    contacts: {
+      collection: 'contact',
+      via       : 'phoneNumbers'
     }
   }
 };

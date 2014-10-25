@@ -8,22 +8,22 @@
 module.exports = {
 
   attributes: {
-    name : {
-      type : 'string'
+    name    : {
+      type: 'string'
     },
     website : {
-      type : 'url'
+      type: 'url'
     },
-    addresses : {
-      model : 'address'
+    address : {
+      model: 'address'
     },
-    branches : {
-      collection : 'branch',
-      via : 'company'
+    branches: {
+      collection: 'branch',
+      via       : 'company'
     },
-    contacts : {
-      collection : 'contact',
-      via : 'companies'
+    contacts: {
+      collection: 'contact',
+      via       : 'companies'
     }
   }
 };
