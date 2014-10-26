@@ -8,23 +8,40 @@
 module.exports = {
 
   attributes: {
-    country : {
-      type : 'string'
+    type        : {
+      type    : 'string',
+      in      : ['home', 'work', 'warehouse', 'headquarter', 'delivery'], //can be completed !
+      required: false
     },
-    state : {
-      type : 'string'
+    country     : {
+      type: 'string'
     },
-    city : {
-      type : 'string'
+    state       : {
+      type: 'string'
     },
-    postcode : {
-      type : 'string'
+    city        : {
+      type: 'string'
     },
-    street : {
-      type : 'string'
+    postcode    : {
+      type: 'string'
     },
-    streetNumber : {
-      type : 'string'
+    street      : {
+      type: 'string'
+    },
+    streetNumber: {
+      type: 'string'
+    },
+    company     : {
+      collection: 'company',
+      via       : 'address'
+    },
+    branches    : {
+      collection: 'branch',
+      via       : 'address',
+    },
+    contacts    : {
+      collection: 'contact',
+      via       : 'addresses'
     }
   }
 };
