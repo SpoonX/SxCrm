@@ -28,11 +28,15 @@ module.exports = {
       collection: 'contact',
       via       : 'branches'
     },
+    products:{
+      model : 'product'
+    },
+    //self association
     mother  : {
       model : 'branch'
     },
     child   : {
-      collection:'branch',
+      collection: 'branch',
       via       : 'mother'
     }
   }
