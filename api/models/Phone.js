@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
     type    : {
       type    : 'string',
-      in: ['home', 'work', 'mobile', 'proMobile'],
+      in      : ['home', 'work', 'mobile', 'proMobile'],
       required: false
     },
     number  : {
