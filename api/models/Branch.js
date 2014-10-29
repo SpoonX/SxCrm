@@ -28,7 +28,7 @@ module.exports = {
       collection: 'contact',
       via       : 'branches'
     },
-    products:{
+    products: {
       collection: 'product',
       via       : 'branches'
     },

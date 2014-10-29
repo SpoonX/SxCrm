@@ -20,7 +20,7 @@ module.exports = {
     },
     branches: {
       collection: 'branch',
-      via       : 'products'
+      via       : 'products',
       dominant  : true
     },
     company : {
