@@ -8,17 +8,23 @@
 module.exports = {
 
   attributes: {
-    name        : {
+    name    : {
       type: 'string'
     },
-    tax         : {
-      type: 'numeric' // TODO: discuss about a model including taxes -> association...
+    taxes   : { //<troll>in case you live in France :p</troll>
+      collection: 'tax',
+      via       : 'products'
     },
-    primaryPrice: { //tax is not included in the price
-      type: 'numeric'
+    price   : { //taxes are not included in the price
+      type: 'integer'
     },
-    soldBy      : {
+    branches: {
       collection: 'branch',
+      via       : 'products'
+      dominant  : true
+    },
+    company : {
+      collection: 'company',
       via       : 'products'
     }
   }

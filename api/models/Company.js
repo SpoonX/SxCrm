@@ -24,6 +24,9 @@ module.exports = {
     contacts: {
       collection: 'contact',
       via       : 'companies'
+    },
+    product : {
+      model : 'products'
     }
   }
 };
