@@ -29,8 +29,7 @@ module.exports = {
       via       : 'branches'
     },
     products: {
-      collection: 'product',
-      via       : 'branches'
+      model: 'product'
     },
     //self association
     mother  : {

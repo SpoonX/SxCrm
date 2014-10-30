@@ -13,15 +13,15 @@ module.exports = {
     },
     taxes   : { //<troll>in case you live in France :p</troll>
       collection: 'tax',
-      via       : 'products'
+      via       : 'products',
+      dominant  : true
     },
     price   : { //taxes are not included in the price
       type: 'integer'
     },
-    branches: {
+    branch  : {
       collection: 'branch',
-      via       : 'products',
-      dominant  : true
+      via       : 'products'
     },
     company : {
       collection: 'company',

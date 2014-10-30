@@ -12,12 +12,11 @@ module.exports = {
       type: 'string'
     },
     value   : {
-      type: 'integer'
+      type: 'float'
     },
     products: {
       collection: 'product',
-      via       : 'taxes',
-      dominant  : true
+      via       : 'taxes'
     }
   }
 };
