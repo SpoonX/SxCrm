@@ -17,7 +17,7 @@ module.exports = {
       type: 'string'
     }
   },
-  beforeCreate : function(values, cb) {
+  beforeCreate: function(values, cb) {
     //we are using BCrypt here to handle password hashing
     bcrypt.genSalt(10, function(err, salt) {
       if (err) {

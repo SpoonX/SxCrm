@@ -27,8 +27,8 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/vagrant/SxCrm/.git"
+    "url": "https://github.com/SpoonX/SxCrm.git"
   },
   "author": "scrunshes",
-  "license": ""
+  "license": "MIT"
 }
