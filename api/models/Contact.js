@@ -36,6 +36,10 @@ module.exports = {
       collection  : 'address',
       via         : 'contacts',
       dominant    : true
+    },
+    invoice       : {
+      collection: 'invoice',
+      via       : 'contact'
     }
   }
 };

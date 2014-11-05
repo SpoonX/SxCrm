@@ -31,13 +31,17 @@ module.exports = {
     products: {
       model: 'product'
     },
+    invoice : {
+      collection: 'invoice',
+      via       : 'branch'
+    },
     //self association
     mother  : {
       model : 'branch'
     },
     child   : {
-      collection: 'branch',
-      via       : 'mother'
+      collection: 'invoice',
+      via       : 'branch'
     }
   }
 };

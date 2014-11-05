@@ -8,24 +8,28 @@
 module.exports = {
 
   attributes: {
-    name    : {
+    name          : {
       type: 'string'
     },
-    taxes   : { //<troll>in case you live in France :p</troll>
+    taxes         : { //<troll>in case you live in France :p</troll>
       collection: 'tax',
       via       : 'products',
       dominant  : true
     },
-    price   : { //taxes are not included in the price
+    price         : { //taxes are not included in the price
       type: 'integer'
     },
-    branch  : {
+    branch        : {
       collection: 'branch',
       via       : 'products'
     },
-    company : {
+    company       : {
       collection: 'company',
       via       : 'products'
+    },
+    invoiceProduct: {
+      collection: 'invoiceProduct',
+      via       : 'invoice'
     }
   }
 };
