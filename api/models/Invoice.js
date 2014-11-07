@@ -7,17 +7,7 @@
 
 module.exports = {
   
-  autoCreatedAt : false, //we use invoiceDate instead
-  attributes    : {
-    invoiceDate : {
-      type      : 'datetime',
-      defaultsTo: function () { 
-        return new Date(); 
-      }
-    },
-    dueDate     : {
-      type: 'datetime'
-    },
+  attributes: {
     products    : {
       colllection : 'invoiceProduct',
       via         : 'invoice'
