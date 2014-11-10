@@ -27,6 +27,13 @@ module.exports = {
     },
     products: {
       model : 'product'
+    },
+    settings: {
+      model: 'invoiceSetting'
+    },
+    invoice: {
+      collection: 'invoice',
+      via       : 'company'
     }
   }
 };
