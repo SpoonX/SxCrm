@@ -71,7 +71,7 @@ describe('UserController', function() {
           assert.property(res.body, 'auth', 'Auth status returned');
           assert.strictEqual(res.body.auth, true, 'Auth statue equals true');
           //email
-          assert.property(res.body,'email', 'Email returned');
+          assert.property(res.body, 'email', 'Email returned');
           assert.strictEqual(res.body.email, email, 'Email equals : ' + email);
         })
         .expect(200, done);
