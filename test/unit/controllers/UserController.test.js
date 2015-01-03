@@ -14,15 +14,15 @@ describe('UserController', function() {
 
       request(sails.hooks.http.app)
         .post('/user/authenticate')
-        .send({email:email,password:password})
-        .set('Content-Type','application/json')
+        .send({email : email, password : password})
+        .set('Content-Type', 'application/json')
         .expect('Content-Type', /json/)
-        .expect(function(res){
+        .expect(function(res) {
           //auth status
-          assert.property(res.body,'auth','Auth status returned');
-          assert.strictEqual(res.body.auth,false,'Auth status equal false')
+          assert.property(res.body, 'auth', 'Auth status returned');
+          assert.strictEqual(res.body.auth, false, 'Auth status equal false')
         })
-        .expect(200,done);  
+        .expect(200, done);  
 
     })
   });
@@ -33,20 +33,20 @@ describe('UserController', function() {
   describe('.auth(false): POST /user/authenticate', function() {
     it('Should return auth:false status when the email is good and password bad', function(done) {
 
-      var email = "whang@dayrep.com"; //test bad email case
+      var email = "whang@dayrep.com"; //test good email case
       var password = "qwerty"; //test bad password case
 
       request(sails.hooks.http.app)
         .post('/user/authenticate')
-        .send({email:email,password:password})
-        .set('Content-Type','application/json')
+        .send({email : email, password : password})
+        .set('Content-Type', 'application/json')
         .expect('Content-Type', /json/)
-        .expect(function(res){
+        .expect(function(res) {
           //auth status
-          assert.property(res.body,'auth','Auth status returned');
-          assert.strictEqual(res.body.auth,false,'Auth status equal false')
+          assert.property(res.body, 'auth', 'Auth status returned');
+          assert.strictEqual(res.body.auth, false, 'Auth status equal false')
         })
-        .expect(200,done);  
+        .expect(200, done);  
 
     })
   });
@@ -63,15 +63,15 @@ describe('UserController', function() {
 
       request(sails.hooks.http.app)
         .post('/user/authenticate')
-        .send({email:email,password:password})
+        .send({email : email, password : password})
         .set('Content-Type', 'application/json')
         .expect('Content-Type', /json/)
         .expect(function (res) {
           //auth status
-          assert.property(res.body,'auth', 'Auth status returned');
+          assert.property(res.body, 'auth', 'Auth status returned');
           assert.strictEqual(res.body.auth, true, 'Auth statue equals true');
           //email
-          assert.property(res.body,'email', 'Email returned');
+          assert.property(res.body, 'email', 'Email returned');
           assert.strictEqual(res.body.email, email, 'Email equals : ' + email);
         })
         .expect(200, done);
