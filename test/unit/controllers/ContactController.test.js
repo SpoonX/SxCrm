@@ -59,7 +59,7 @@ describe('ContactController', function() {
           .expect(function(res) {
             assert.isObject(res.body, 'Object returned')
           })
-          .expect(200, done);
+          .expect(201, done);
       });
     });
     /**
