@@ -26,7 +26,7 @@ module.exports.routes = {
     view : 'homepage'
   },
   //User
-  'POST /user/authenticate' : "User.handleLogin",
-  'GET /user/logout' : "User.handleLogout"
+  'POST /user/authenticate' : 'User.handleLogin',
+  'GET /user/logout'        : 'User.handleLogout'
 
 };
