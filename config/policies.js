@@ -20,8 +20,10 @@ module.exports.policies = {
   '*': false, //by default accept no request
   //User
   UserController    : {
-    'handleLogin' :   true,
-    'handleLogout':   ['userAuth']
+    'handleLogin' : true,
+    'handleLogout': ['userAuth'],
+    'authState'   : true,
+    'email'       : true
   },
   //Contact
   ContactController : {

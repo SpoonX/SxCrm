@@ -12,16 +12,16 @@ module.exports = {
   * HandleLogin
   *
   */
-  handleLogin : function(req, res) {
+  handleLogin : function (req, res) {
     /**
     * Input :
-    * @email
-    * @password
+    *   @email
+    *   @password
     */
-    var email = req.param('email');
-    var password = req.param('password');
+    var email   = req.param('email');
+    var password= req.param('password');
 
-    User.findOne({email : email}, function(err, user) {
+    User.findOne({email : email}, function (err, user) {
       if (err) {
         return res.negotiate(err);
       }
@@ -31,7 +31,7 @@ module.exports = {
         });
       }
       //Now perform a BCrypt compare
-      bcrypt.compare(password, user.password, function(err, response) {
+      bcrypt.compare(password, user.password, function (err, response) {
         if (err) {
           return res.negotiate(err);
         }
@@ -56,13 +56,40 @@ module.exports = {
   * HandleLogout
   *
   */
-  handleLogout : function(req, res) {
+  handleLogout : function (req, res) {
     if (req.session.user) {
       delete req.session.user;
     }
 
     return res.json({
       auth : false
+    });
+  },
+  /**
+   * AuthState
+   * 
+   */
+  authState : function (req, res) {
+    if (req.session.user) {
+      return res.json({
+        auth : true
+      });
+    }
+    return res.json({
+      auth : false
+    });
+  },
+  /**
+   * Email
+   */
+  email : function (req, res) {
+    if (req.session.user) {
+      return res.json({
+        email : req.session.user.email
+      })
+    }
+    return res.json({
+      email : false
     });
   }
 };
