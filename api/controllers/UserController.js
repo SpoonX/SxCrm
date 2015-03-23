@@ -81,17 +81,4 @@ module.exports = {
       auth: false
     });
   }
-  /**
-   * Email
-   */
-  // email : function (req, res) {
-  //   if (req.session.user) {
-  //     return res.json({
-  //       email : req.session.user.email
-  //     })
-  //   }
-  //   return res.json({
-  //     email : false
-  //   });
-  // }
 };
