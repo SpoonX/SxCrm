@@ -27,7 +27,7 @@ module.exports = {
       }
       if (!user) {
         return res.json({
-          auth : false
+          auth: false
         });
       }
       //Now perform a BCrypt compare
@@ -37,16 +37,16 @@ module.exports = {
         }
         if(!response){
           return res.json({
-            auth : false
+            auth: false
           });
         }
         //now add it to session
         req.session.user = {
-          auth : true,
+          auth  : true,
           email : user.email
         };
         return res.json({
-          auth : true,
+          auth  : true,
           email : user.email
         });
       });
@@ -62,34 +62,36 @@ module.exports = {
     }
 
     return res.json({
-      auth : false
+      auth: false
     });
   },
   /**
-   * AuthState
+   * Identification
    * 
    */
-  authState : function (req, res) {
+  identification : function (req, res) {
     if (req.session.user) {
       return res.json({
-        auth : true
+        email : req.session.user.email,
+        auth  : true
       });
     }
+
     return res.json({
-      auth : false
+      auth: false
     });
-  },
+  }
   /**
    * Email
    */
-  email : function (req, res) {
-    if (req.session.user) {
-      return res.json({
-        email : req.session.user.email
-      })
-    }
-    return res.json({
-      email : false
-    });
-  }
+  // email : function (req, res) {
+  //   if (req.session.user) {
+  //     return res.json({
+  //       email : req.session.user.email
+  //     })
+  //   }
+  //   return res.json({
+  //     email : false
+  //   });
+  // }
 };
