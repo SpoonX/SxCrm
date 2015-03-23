@@ -40,7 +40,7 @@ describe('UserController', function() {
         })
         .expect(200, done);  
 
-    })
+    });
   });
   /**
   * Auth with good email and bad password
@@ -64,7 +64,7 @@ describe('UserController', function() {
         })
         .expect(200, done);  
 
-    })
+    });
   });
 
   /**
@@ -91,15 +91,15 @@ describe('UserController', function() {
           assert.strictEqual(res.body.email, email, 'Email equals : ' + email);
         })
         .expect(200, done);
-    })
+    });
   });
   /**
-   * Get authState
+   * Get identification (auth, email)
    */
-  describe('.auth(false): Get /user/authState', function() {
+  describe('.auth(false): Get /user/identification', function() {
     it('Should return auth: false status', function (done) {
       request(sails.hooks.http.app)
-        .get('/user/authState')
+        .get('/user/identification')
         .set('Content-Type', 'application/json')
         .expect('Content-Type', /json/)
         .expect(function (res) {
@@ -107,54 +107,57 @@ describe('UserController', function() {
           assert.property(res.body, 'auth', 'Auth status returned');
           assert.strictEqual(res.body.auth, false, 'Auth statue equals false');
         })
-        .expect(200, done)
-    })
+        .expect(200, done);
+    });
   });
-  describe('.auth(true): Get /user/authState', function() {
+  describe('.auth(true): Get /user/identification', function() {
     before(loginUser());
-    it('Should return auth: true status', function (done) {
+    it('Should return auth: true status && email : [string]', function (done) {
       agent
-        .get('/user/authState')
+        .get('/user/identification')
         .set('Content-Type', 'application/json')
         .expect('Content-Type', /json/)
         .expect(function (res) {
           //auth status
           assert.property(res.body, 'auth', 'Auth status returned');
           assert.strictEqual(res.body.auth, true, 'Auth status equals true');
+          //email status
+          assert.property(res.body, 'email', 'Email returned');
+          assert.isString(res.body.email, 'Email is a string');
         })
-        .expect(200, done)
-    })
+        .expect(200, done);
+    });
   });
   /**
    * Get email
    */
-  describe('.auth(false): Get /user/email', function() {
-    it('Should return email: false', function (done) {
-      request(sails.hooks.http.app)
-        .get('/user/email')
-        .set('Content-Type', 'application/json')
-        .expect('Content-Type', /json/)
-        .expect(function (res) {
-          //email
-          assert.property(res.body, 'email', 'Email returned');
-          assert.strictEqual(res.body.email, false, 'Email equals false');
-        })
-        .expect(200, done)
-    })
-  });
-  describe('.auth(true): Get /user/email', function() {
-    before(loginUser());
-    it('Should return email: [string]', function (done) {
-      agent
-        .get('/user/email')
-        .set('Content-Type', 'application/json')
-        .expect('Content-Type', /json/)
-        .expect(function (res) {
-          //email status
-          assert.property(res.body, 'email', 'Email returned');
-          assert.isString(res.body.email, 'Email is a string')
-        })
-        .expect(200, done)
-    })
-  });
+  // describe('.auth(false): Get /user/email', function() {
+  //   it('Should return email: false', function (done) {
+  //     request(sails.hooks.http.app)
+  //       .get('/user/email')
+  //       .set('Content-Type', 'application/json')
+  //       .expect('Content-Type', /json/)
+  //       .expect(function (res) {
+  //         //email
+  //         assert.property(res.body, 'email', 'Email returned');
+  //         assert.strictEqual(res.body.email, false, 'Email equals false');
+  //       })
+  //       .expect(200, done)
+  //   })
+  // });
+  // describe('.auth(true): Get /user/email', function() {
+  //   before(loginUser());
+  //   it('Should return email: [string]', function (done) {
+  //     agent
+  //       .get('/user/email')
+  //       .set('Content-Type', 'application/json')
+  //       .expect('Content-Type', /json/)
+  //       .expect(function (res) {
+  //         //email status
+  //         assert.property(res.body, 'email', 'Email returned');
+  //         assert.isString(res.body.email, 'Email is a string')
+  //       })
+  //       .expect(200, done)
+  //   })
+  // });
 });
